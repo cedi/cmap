@@ -9,6 +9,7 @@ import (
 	"reflect"
 	"sort"
 
+	bnet "github.com/bio-routing/bio-rd/net"
 	kout "github.com/cedi/kkpctl/pkg/output"
 	"github.com/lensesio/tableprinter"
 	"gopkg.in/yaml.v2"
@@ -38,7 +39,9 @@ func (r HostShort) ParseCollection(inputObj interface{}, output string, sortBy s
 
 	case kout.Text:
 		sort.Slice(objects, func(i, j int) bool {
-			return objects[j].IP > objects[i].IP
+			ipA, _ := bnet.IPFromString(objects[i].IP)
+			ipB, _ := bnet.IPFromString(objects[j].IP)
+			return ipA.Equal(&ipB)
 		})
 
 		var bodyBuf io.ReadWriter

@@ -75,8 +75,8 @@ func HostSSH(host string) (output.HostShort, error) {
 		log.Printf("Warnings: \n %v", warnings)
 	}
 
-	if len(scanResult.Hosts) != 1 {
-		return output.HostShort{}, fmt.Errorf("ScanHostSSH: returned more than one result")
+	if len(scanResult.Hosts) == 0 {
+		return output.HostShort{}, fmt.Errorf("ScanHostSSH: no result returned for host %s", host)
 	}
 
 	hostObj := scanResult.Hosts[0]
@@ -90,13 +90,13 @@ func HostSSH(host string) (output.HostShort, error) {
 		hostnames[idx] = hostname.Name
 	}
 
-	if len(hostObj.Ports) != 1 {
-		return output.HostShort{}, fmt.Errorf("ScanHostSSH: returned more than one port result")
+	if len(hostObj.Ports) == 0 {
+		return output.HostShort{}, fmt.Errorf("ScanHostSSH: no result returned for port scan on host %s", host)
 	}
 
 	return output.HostShort{
-		Name: strings.Join(hostnames, ","),
-		IP:   strings.Join(ips, ","),
+		Name: strings.Join(hostnames, ", "),
+		IP:   strings.Join(ips, ", "),
 		SSH:  string(hostObj.Ports[0].Status()),
 	}, nil
 }

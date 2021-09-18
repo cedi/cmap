@@ -11,5 +11,6 @@ require (
 
 require (
 	github.com/Ullaakut/nmap v2.0.2+incompatible
+	github.com/bio-routing/bio-rd v0.0.3-pre7
 	github.com/pkg/errors v0.9.1
 )
