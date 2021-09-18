@@ -15,13 +15,12 @@ jobs:
         with:
           go-version: 1.17
 
-      - name: Install Go tools
-        run: |
-          make tools
-
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - name: Install Go tools
+        run: |
 
       - name: Build
         run: make build
