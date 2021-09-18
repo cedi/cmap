@@ -10,7 +10,7 @@ import (
 var versionCMD = &cobra.Command{
 	Use:     "version",
 	Short:   "Shows version information",
-	Example: "kkpctl version",
+	Example: "cmap version",
 	Args:    cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 		render := make([]kout.VersionRender, 0)
@@ -24,7 +24,7 @@ var versionCMD = &cobra.Command{
 			BuiltBy:   BuiltBy,
 		})
 
-		parsed, err := kout.ParseOutput(*render, outputType, sortBy)
+		parsed, err := kout.ParseOutput(render, outputType, kout.Name)
 		if err != nil {
 			fmt.Printf("Error: %v\n", err)
 		}

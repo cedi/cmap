@@ -39,7 +39,7 @@ func (r HostShort) ParseCollection(inputObj interface{}, output string, sortBy s
 
 	case kout.Text:
 		sort.Slice(objects, func(i, j int) bool {
-			return objects[j].Name > objects[i].Name
+			return objects[j].IP > objects[i].IP
 		})
 
 		var bodyBuf io.ReadWriter

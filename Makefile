@@ -13,11 +13,11 @@ LDFLAGS=-X main.version=${VERSION} \
 LDFLAGS_BUILD=-ldflags "${LDFLAGS}"
 LDFLAGS_RELEASE=-ldflags "-s -w ${LDFLAGS}"
 
-OUTPUT_OBJ=-o build/kkpctl
+OUTPUT_OBJ=-o build/cmap
 
 MAIN_GO=./main.go
 
-all: build
+all: build install
 
 build: build_dir tidy analyze
 	go build ${LDFLAGS_BUILD} ${OUTPUT_OBJ} ${MAIN_GO}
@@ -44,7 +44,7 @@ test_all: test
 	go test all
 
 install:
-	cp ./build/kkpctl ${GOPATH}/bin/
+	cp ./build/cmap ${GOPATH}/bin/
 
 clean:
 	rm -rf ./build

@@ -41,9 +41,7 @@ func Execute(version, commit, date, builtBy string) {
 	Commit = commit
 	BuiltBy = builtBy
 
-	var err error
-
-	err = rootCmd.Execute()
+	err := rootCmd.Execute()
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
