@@ -14,11 +14,10 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-// HostShort
 type HostShort struct {
 	Name string `header:"name"`
 	IP   string `header:"IP"`
-	SSH  bool   `header:"SSH Port open"`
+	SSH  string `header:"SSH"`
 }
 
 func (r HostShort) ParseCollection(inputObj interface{}, output string, sortBy string) (string, error) {

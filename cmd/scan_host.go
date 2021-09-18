@@ -10,14 +10,14 @@ import (
 )
 
 // projectsCmd represents the projects command
-var scanNetworkCmd = &cobra.Command{
-	Use:     "network cidr",
+var scanHostCmd = &cobra.Command{
+	Use:     "host ip",
 	Short:   "Scans a network",
-	Example: "cmap scan network 192.168.0.0/24",
-	Args:    cobra.MinimumNArgs(1),
+	Example: "cmap scan host 192.168.0.123",
+	Args:    cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 
-		result, err := scan.Network(args...)
+		result, err := scan.HostSSH(args[0])
 		if err != nil {
 			return errors.Wrap(err, "failed to scan network")
 		}
@@ -34,5 +34,5 @@ var scanNetworkCmd = &cobra.Command{
 }
 
 func init() {
-	scanCmd.AddCommand(scanNetworkCmd)
+	scanCmd.AddCommand(scanHostCmd)
 }
