@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install Go tools
-        run: |
+        run: make tools
 
       - name: Build
         run: make build
