@@ -16,9 +16,11 @@ import (
 )
 
 type HostShort struct {
-	Name string `header:"name"`
-	IP   string `header:"IP"`
-	SSH  string `header:"SSH"`
+	Name       string `header:"name"`
+	IP         string `header:"IP"`
+	SSH        string `header:"SSH"`
+	OtherPorts string `header:"Other Ports"`
+	Error      string `header:"Error"`
 }
 
 func (r HostShort) ParseCollection(inputObj interface{}, output string, sortBy string) (string, error) {

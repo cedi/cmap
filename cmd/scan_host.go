@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/cedi/cmap/pkg/scan"
@@ -16,8 +17,12 @@ var scanHostCmd = &cobra.Command{
 	Example: "cmap scan host 192.168.0.123",
 	Args:    cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
+		fmt.Printf("Starting scan of host %v with Timeout %s\n", args, GetTimeout().String())
 
-		result, err := scan.HostSSH(args[0])
+		ctx, cancel := context.WithTimeout(context.Background(), GetTimeout())
+		defer cancel()
+
+		result, err := scan.Host(ctx, additionalPorts, args[0])
 		if err != nil {
 			return errors.Wrap(err, "failed to scan network")
 		}
