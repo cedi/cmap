@@ -24,7 +24,7 @@ var scanNetworkCmd = &cobra.Command{
 		ctx, cancel := context.WithTimeout(context.Background(), GetTimeout())
 		defer cancel()
 
-		result, err := scan.Network(ctx, paralellScans, additionalPorts, args...)
+		result, err := scan.Network(ctx, paralellScans, additionalPorts, extraNmapArgs, args...)
 		if err != nil {
 			return errors.Wrap(err, "failed to scan network")
 		}

@@ -12,7 +12,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-func Network(ctx context.Context, paralellScans int, additionalPorts string, cidrs ...string) ([]output.HostShort, error) {
+func Network(ctx context.Context, paralellScans int, additionalPorts string, extraNmapArgs string, cidrs ...string) ([]output.HostShort, error) {
 	if ctx == nil {
 		newCtx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 		defer cancel()
@@ -55,7 +55,7 @@ func Network(ctx context.Context, paralellScans int, additionalPorts string, cid
 	jobs := make(chan nmap.Address, totalJobs)
 
 	for worker := 0; worker < paralellScans; worker++ {
-		go hostWorker(worker, ctx, additionalPorts, jobs, jobResult)
+		go hostWorker(worker, ctx, additionalPorts, extraNmapArgs, jobs, jobResult)
 	}
 
 	for _, host := range scanResult.Hosts {
@@ -75,11 +75,11 @@ func Network(ctx context.Context, paralellScans int, additionalPorts string, cid
 	return result, nil
 }
 
-func hostWorker(id int, ctx context.Context, additionalPorts string, jobs <-chan nmap.Address, results chan<- output.HostShort) {
+func hostWorker(id int, ctx context.Context, additionalPorts string, extraNmapArgs string, jobs <-chan nmap.Address, results chan<- output.HostShort) {
 	for job := range jobs {
 		//log.Printf("Debug: Worker %d, started scan-job %s\n", id, job.Addr)
 
-		host, err := Host(ctx, additionalPorts, job.Addr)
+		host, err := Host(ctx, additionalPorts, extraNmapArgs, job.Addr)
 		if err != nil {
 			host = output.HostShort{
 				Name:       "Unknown",
@@ -95,7 +95,7 @@ func hostWorker(id int, ctx context.Context, additionalPorts string, jobs <-chan
 	}
 }
 
-func Host(ctx context.Context, additionalPorts string, host string) (output.HostShort, error) {
+func Host(ctx context.Context, additionalPorts string, extraNmapArgs string, host string) (output.HostShort, error) {
 	if ctx == nil {
 		newCtx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 		defer cancel()
@@ -115,6 +115,7 @@ func Host(ctx context.Context, additionalPorts string, host string) (output.Host
 		nmap.WithTargets(host),
 		nmap.WithContext(ctx),
 		nmap.WithPorts(scanPorts...),
+		nmap.WithCustomArguments(extraNmapArgs),
 	)
 	if err != nil {
 		return output.HostShort{}, errors.Wrap(err, "unable to create nmap scanner")

@@ -22,7 +22,7 @@ var scanHostCmd = &cobra.Command{
 		ctx, cancel := context.WithTimeout(context.Background(), GetTimeout())
 		defer cancel()
 
-		result, err := scan.Host(ctx, additionalPorts, args[0])
+		result, err := scan.Host(ctx, additionalPorts, extraNmapArgs, args[0])
 		if err != nil {
 			return errors.Wrap(err, "failed to scan network")
 		}
