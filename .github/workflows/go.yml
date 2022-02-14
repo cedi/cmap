@@ -19,8 +19,5 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Go tools
-        run: make tools
-
       - name: Build
         run: make build
