@@ -17,9 +17,9 @@ OUTPUT_OBJ=-o build/cmap
 
 MAIN_GO=./main.go
 
-all: build install
+all: tidy analyze build install
 
-build: build_dir tidy analyze
+build: build_dir 
 	go build ${LDFLAGS_BUILD} ${OUTPUT_OBJ} ${MAIN_GO}
 
 release: clean build_dir analyze
