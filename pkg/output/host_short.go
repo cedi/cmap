@@ -43,7 +43,7 @@ func (r HostShort) ParseCollection(inputObj interface{}, output string, sortBy s
 		sort.Slice(objects, func(i, j int) bool {
 			ipA, _ := bnet.IPFromString(objects[i].IP)
 			ipB, _ := bnet.IPFromString(objects[j].IP)
-			return ipA.Equal(&ipB)
+			return ipA.Equal(ipB)
 		})
 
 		var bodyBuf io.ReadWriter
