@@ -1,18 +1,19 @@
 module github.com/cedi/cmap
 
-go 1.17
+go 1.20
 
 require (
 	github.com/cedi/kkpctl v1.0.0
 	github.com/lensesio/tableprinter v0.0.0-20201125135848-89e81fc956e7
 	github.com/spf13/cobra v1.6.1
-	gopkg.in/yaml.v3 v3.0.1
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
 require (
 	github.com/Ullaakut/nmap v2.0.2+incompatible
 	github.com/bio-routing/bio-rd v0.1.8
 	github.com/pkg/errors v0.9.1
+	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (
@@ -48,5 +49,4 @@ require (
 	golang.org/x/net v0.0.0-20220114011407-0dd24b26b47d // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
