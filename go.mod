@@ -11,7 +11,7 @@ require (
 
 require (
 	github.com/Ullaakut/nmap v2.0.2+incompatible
-	github.com/bio-routing/bio-rd v0.1.8
+	github.com/bio-routing/bio-rd v0.1.9
 	github.com/pkg/errors v0.9.1
 	gopkg.in/yaml.v2 v2.4.0
 )
@@ -46,7 +46,7 @@ require (
 	github.com/savaki/jq v0.0.0-20161209013833-0e6baecebbf8 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.mongodb.org/mongo-driver v1.8.2 // indirect
-	golang.org/x/net v0.0.0-20220114011407-0dd24b26b47d // indirect
-	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/net v0.7.0 // indirect
+	golang.org/x/text v0.7.0 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 )
