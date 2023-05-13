@@ -162,7 +162,7 @@ func Host(ctx context.Context, additionalPorts string, extraNmapArgs string, hos
 		for _, probe := range scanPorts {
 			if fmt.Sprintf("%d", port.ID) == probe {
 				additionalPortStatus = append(additionalPortStatus,
-					fmt.Sprintf("%s/%d/%s=%s", port.Service, port.ID, port.Protocol, string(port.Status())),
+					fmt.Sprintf("%s: %d (%s) = %s", port.Protocol, port.ID, port.Service, string(port.Status())),
 				)
 			}
 		}
