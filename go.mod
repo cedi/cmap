@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/cedi/kkpctl v1.0.0
 	github.com/lensesio/tableprinter v0.0.0-20201125135848-89e81fc956e7
-	github.com/spf13/cobra v1.7.0
+	github.com/spf13/cobra v1.8.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
