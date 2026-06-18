@@ -1,6 +1,6 @@
 module github.com/cedi/cmap
 
-go 1.20
+go 1.23.0
 
 require (
 	github.com/cedi/kkpctl v1.0.0
@@ -12,7 +12,7 @@ require (
 require (
 	github.com/Ullaakut/nmap v2.0.2+incompatible
 	github.com/Ullaakut/nmap/v3 v3.0.2
-	github.com/bio-routing/bio-rd v0.1.9
+	github.com/bio-routing/bio-rd v0.1.10
 	github.com/pkg/errors v0.9.1
 	gopkg.in/yaml.v2 v2.4.0
 )
@@ -47,7 +47,7 @@ require (
 	github.com/savaki/jq v0.0.0-20161209013833-0e6baecebbf8 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.mongodb.org/mongo-driver v1.8.2 // indirect
-	golang.org/x/net v0.7.0 // indirect
-	golang.org/x/text v0.7.0 // indirect
-	google.golang.org/protobuf v1.27.1 // indirect
+	golang.org/x/net v0.38.0 // indirect
+	golang.org/x/text v0.23.0 // indirect
+	google.golang.org/protobuf v1.33.0 // indirect
 )
